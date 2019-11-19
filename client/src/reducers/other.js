@@ -1,7 +1,7 @@
 import { CHANGE_MENU_STATE } from '../actions/types';
 
 const initialState = {
-    isOpenMenu: false,
+    isOpenMenu: true,
 };
 
 export default function(state = initialState, action) {

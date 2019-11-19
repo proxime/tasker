@@ -5,6 +5,7 @@ import { Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 const Main = ({ isOpenMenu }) => {
+    console.log(isOpenMenu);
     return (
         <div className={`container ${isOpenMenu ? 'smaller' : ''}`}>
             <main>
