@@ -18,20 +18,22 @@ const ActuallTasksSettings = () => {
                         }`}
                         onClick={() => handleSelect()}
                     >
-                        {isSelected && <i class="fas fa-times"></i>}
+                        {isSelected && <i className="fas fa-times"></i>}
                     </div>
                 </div>
-                <div className="actuall-tasks__settings-items">
-                    <div className="actuall-tasks__settings-item">
-                        <i class="fas fa-check"></i>
+                {isSelected && (
+                    <div className="actuall-tasks__settings-items">
+                        <div className="actuall-tasks__settings-item">
+                            <i className="fas fa-check"></i>
+                        </div>
+                        <div className="actuall-tasks__settings-item">
+                            <i className="fas fa-trash-alt"></i>
+                        </div>
+                        <div className="actuall-tasks__settings-item">
+                            <i className="fas fa-star"></i>
+                        </div>
                     </div>
-                    <div className="actuall-tasks__settings-item">
-                        <i class="fas fa-trash-alt"></i>
-                    </div>
-                    <div className="actuall-tasks__settings-item">
-                        <i class="fas fa-star"></i>
-                    </div>
-                </div>
+                )}
             </div>
         </Settings>
     );

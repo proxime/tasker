@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import ActuallTasksSettings from './ActuallTasksSetting';
+import AccountInfo from '../AccountInfo';
+import SectionTitle from '../SectionTitle';
+import Tasks from './Tasks';
 
 const ActuallTasks = () => {
     const [settingsHeight, setSettingsHeight] = useState(0);
@@ -12,6 +15,9 @@ const ActuallTasks = () => {
     return (
         <div className="actuall-tasks" style={{ paddingTop: settingsHeight }}>
             <ActuallTasksSettings />
+            <AccountInfo />
+            <SectionTitle>Aktualne Zadania</SectionTitle>
+            <Tasks />
         </div>
     );
 };
