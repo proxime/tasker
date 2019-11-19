@@ -1,0 +1,105 @@
+.mobile-aside {
+    position: fixed;
+    left: 0;
+    top: $navbar-height;
+    width: 100vw;
+    height: calc(100vh - 56px);
+    z-index: 11;
+    color: white;
+    overflow-y: auto;
+    &__list {
+        border-top: 1px solid rgba(255, 255, 255, 0.5);
+    }
+    &__item {
+        padding: 20px;
+        font-size: 2rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+        opacity: 0;
+        transition: opacity 0.15s linear;
+        cursor: pointer;
+        &.show {
+            opacity: 1;
+        }
+        &:hover {
+            background-color: darken($navbar-bg, 15%);
+        }
+    }
+    &__popup {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 300vmax;
+        height: 300vmax;
+        background-color: darken($navbar-bg, 10%);
+        border-radius: 50%;
+        transform: translate(-50%, -50%) scale(0);
+        animation: showMobileMenu 0.4s linear forwards;
+        z-index: 10;
+    }
+}
+
+@keyframes showMobileMenu {
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+.desktop-aside {
+    position: fixed;
+    left: 0;
+    top: $navbar-height;
+    width: 70px;
+    min-height: calc(100vh - $navbar-height);
+    background-color: darken($navbar-bg, 10%);
+    transition: width 0.2s linear;
+    overflow-x: hidden;
+    // z-index: 10;
+    &.open {
+        width: 280px;
+        .desktop-aside__scroll {
+            & > div:nth-child(3) {
+                left: calc(100% - 8px);
+            }
+        }
+    }
+    &__list {
+        padding: 10px 0;
+    }
+    &__item {
+        color: white;
+        font-size: 2rem;
+        cursor: pointer;
+        position: relative;
+        padding: 10px 0;
+        transition: background-color 0.15s linear;
+        &:hover {
+            background-color: darken($navbar-bg, 15%);
+        }
+    }
+    &__item-icon {
+        width: 70px;
+        height: 100%;
+        text-align: center;
+        i {
+            font-size: 3rem;
+        }
+    }
+    &__item-text {
+        position: absolute;
+        top: 0;
+        left: 70px;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        width: 210px;
+    }
+    &__scroll {
+        height: calc(100vh - 56px) !important;
+        padding: 10px 0;
+        width: 280px !important;
+        & > div:nth-child(3) {
+            left: 62px;
+            transition: left 0.21s linear;
+        }
+    }
+}

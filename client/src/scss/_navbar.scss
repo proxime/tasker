@@ -1,0 +1,178 @@
+.hamburger {
+    outline: none;
+    opacity: 1 !important;
+    transition: background-color 0.15s linear;
+    border-right: 1px solid rgba(255, 255, 255, 0.5);
+    &:hover {
+        background-color: darken($navbar-bg, 5%);
+    }
+    .hamburger-inner,
+    .hamburger-inner:after,
+    .hamburger-inner:before {
+        background-color: white !important;
+    }
+}
+
+.navbar {
+    position: fixed;
+    width: 100%;
+    height: $navbar-height;
+    background-color: $navbar-bg;
+    display: flex;
+    color: white;
+    z-index: 100;
+    left: 0;
+    top: 0;
+    &__logo-container {
+        display: flex;
+        padding: 0.1 * $navbar-height 15px;
+        height: 100%;
+        align-items: center;
+        justify-content: center;
+        user-select: none;
+    }
+    &__logo {
+        height: 100%;
+        display: block;
+        margin-right: 10px;
+    }
+    &__title {
+        font-size: 3rem;
+    }
+    &__search-mobile {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        right: 0;
+        width: 50px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        padding: 5px;
+        margin: 0 3px;
+        cursor: pointer;
+        svg {
+            width: 100%;
+            height: 100%;
+        }
+    }
+    &__search-mobile-input {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        right: 56px;
+        top: 10%;
+        height: 80%;
+        width: calc(100% - 71px - 40px - 20px);
+        transform: scaleX(0);
+        transition: transform 0.15s ease-in;
+        transform-origin: 100%;
+        background-color: #fff;
+        box-shadow: 0 0 3px 0px rgba(255, 255, 255, 0.7);
+        border-radius: 5px;
+        form {
+            height: 100%;
+            width: 100%;
+            display: flex;
+            align-items: center;
+        }
+        input {
+            width: 100%;
+            height: 80%;
+            outline: none;
+            padding: 10px;
+            border: none;
+            font-size: 1.7rem;
+            background-color: transparent;
+            padding-left: 0;
+        }
+        &.active {
+            transform: scaleX(1);
+        }
+    }
+    &__search-mobile-input-close {
+        color: #777;
+        font-size: 2rem;
+        padding: 5px;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+    }
+    &__desktop {
+        flex-grow: 1;
+        display: flex;
+    }
+    &__desktop-search {
+        flex-grow: 1;
+        padding: 0 40px;
+        form {
+            height: 100%;
+            display: flex;
+            align-items: center;
+        }
+    }
+    &__desktop-input {
+        background-color: #fff;
+        height: 80%;
+        display: flex;
+        border-radius: 10px;
+        overflow: hidden;
+        width: 100%;
+        max-width: 600px;
+        input {
+            border: none;
+            outline: none;
+            padding: 0 15px;
+            flex-grow: 1;
+            padding-left: 0;
+            font-size: 1.5rem;
+        }
+        button {
+            height: 100%;
+            width: 44.8px;
+            border: none;
+            background: transparent;
+            outline: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            svg {
+                height: 30px;
+                width: 30px;
+            }
+        }
+    }
+    &__search-desktop-input-close {
+        height: 100%;
+        font-size: 2rem;
+        display: flex;
+        align-items: center;
+        padding: 10px;
+        cursor: pointer;
+        color: #777;
+    }
+    &__desktop-login {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        padding: 0 15px;
+    }
+    &__desktop-login-link {
+        font-size: 1.6rem;
+        color: darken($navbar-bg, 10%);
+        cursor: pointer;
+        text-decoration: none;
+        background-color: white;
+        padding: 6px 15px;
+        font-weight: 600;
+        border-radius: 10px;
+        transition: 0.15s linear;
+        &:hover {
+            color: white;
+            background-color: darken($navbar-bg, 10%);
+        }
+    }
+}

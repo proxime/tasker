@@ -1,0 +1,39 @@
+.actuall-tasks {
+    &__settings {
+        display: flex;
+        align-items: center;
+    }
+    &__settings-select {
+        padding: 5px 10px;
+        margin-right: 20px;
+    }
+    &__settings-select-item {
+        width: 20px;
+        height: 20px;
+        border: 2px solid #555;
+        cursor: pointer;
+        border-radius: 3px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        &.active {
+            background-color: #555;
+            color: white;
+        }
+    }
+    &__settings-items {
+        display: flex;
+    }
+    &__settings-item {
+        cursor: pointer;
+        font-size: 2rem;
+        padding: 5px 10px;
+        border-radius: 5px;
+        color: #555;
+        &:hover {
+            background-color: #50c3f8;
+            color: white;
+        }
+    }
+}
