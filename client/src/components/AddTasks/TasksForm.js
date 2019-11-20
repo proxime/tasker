@@ -11,6 +11,11 @@ const TasksForm = ({ addLocalTask }) => {
         important: false,
     });
 
+    const [formErrors, setFormErrors] = useState({
+        task: '',
+        expires: '',
+    });
+
     const { task, expires, desc, important } = formData;
 
     const handleDataChange = e => {
@@ -18,6 +23,17 @@ const TasksForm = ({ addLocalTask }) => {
             ...formData,
             [e.target.name]: e.target.value,
         });
+        if ([e.target.name] == 'task') {
+            setFormErrors({
+                ...formErrors,
+                task: '',
+            });
+        } else if ([e.target.name] == 'expires') {
+            setFormErrors({
+                ...formErrors,
+                expires: '',
+            });
+        }
     };
 
     const handleCheckChange = e => {
@@ -27,8 +43,42 @@ const TasksForm = ({ addLocalTask }) => {
         });
     };
 
+    const checkDate = () => {
+        const date = new Date();
+        const stringDate = `${date.getFullYear()}-${date.getMonth() +
+            1}-${date.getDate()}`;
+        if (expires < stringDate) {
+            return false;
+        }
+        return true;
+    };
+
+    checkDate();
+
     const onSubmit = e => {
         e.preventDefault();
+        const date = expires ? checkDate() : true;
+        console.log(date);
+        if (!task || !date) {
+            if (!task && !date) {
+                setFormErrors({
+                    ...formErrors,
+                    expires: 'Wprowadź poprawną datę',
+                    task: 'Wprowadź zadanie',
+                });
+            } else if (!task) {
+                setFormErrors({
+                    ...formErrors,
+                    task: 'Wprowadź zadanie',
+                });
+            } else {
+                setFormErrors({
+                    ...formErrors,
+                    expires: 'Wprowadź poprawną datę',
+                });
+            }
+            return;
+        }
         addLocalTask(formData);
         setFormData({
             task: '',
@@ -61,6 +111,11 @@ const TasksForm = ({ addLocalTask }) => {
                         value={task}
                         onChange={e => handleDataChange(e)}
                     />
+                    {formErrors.task && (
+                        <div className="tasks-form__error">
+                            {formErrors.task}
+                        </div>
+                    )}
                 </label>
                 <label className="tasks-form__date">
                     <p className="tasks-form__name">Ważne do</p>
@@ -71,6 +126,11 @@ const TasksForm = ({ addLocalTask }) => {
                         max="2099-12-31"
                         onChange={e => handleDataChange(e)}
                     />
+                    {formErrors.expires && (
+                        <div className="tasks-form__error">
+                            {formErrors.expires}
+                        </div>
+                    )}
                 </label>
                 <label className="tasks-form__desc">
                     <p className="tasks-form__name">Opis</p>
@@ -93,7 +153,7 @@ const TasksForm = ({ addLocalTask }) => {
                         ) : (
                             <i className="far fa-star"></i>
                         )}{' '}
-                        Ważne
+                        Ustaw jako priorytet
                     </p>
                 </label>
                 <button className="tasks-form__btn">Dodaj Zadanie</button>

@@ -15,9 +15,10 @@
         max-width: 800px;
         label {
             display: block;
-            margin-bottom: 15px;
+            margin-bottom: 25px;
+            position: relative;
             @media (min-width: 800px) {
-                margin-bottom: 20px;
+                margin-bottom: 30px;
             }
             input {
                 width: 100%;
@@ -86,6 +87,16 @@
             color: #f9ca24;
             margin-right: 5px;
             font-size: 2.5rem;
+        }
+    }
+    &__error {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        color: red;
+        font-size: 1.1rem;
+        @media (min-width: 800px) {
+            font-size: 1.2rem;
         }
     }
     &__btn {
