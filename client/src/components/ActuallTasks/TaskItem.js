@@ -1,13 +1,16 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-const TaskItem = ({ task, handleChangeImportantState }) => {
+const TaskItem = ({ task, deleteLocalTask, setImportantLocalTask }) => {
     return (
         <div className={`task ${task.important ? 'important' : null}`}>
-            <div className="task__expires">{`Ważne do: ${task.expire}`}</div>
+            {task.expires && (
+                <div className="task__expires">{`Ważne do: ${task.expires}`}</div>
+            )}
             <div className="task__container">
                 <div className="task__select"></div>
                 <div>
-                    <div className="task__title">{task.title}</div>
+                    <div className="task__title">{task.task}</div>
                     {task.desc && <div className="task__desc">{task.desc}</div>}
                 </div>
                 <div className="task__functions">
@@ -18,7 +21,10 @@ const TaskItem = ({ task, handleChangeImportantState }) => {
                                 style={{ color: '#badc58' }}
                             ></i>
                         </div>
-                        <div className="actuall-tasks__settings-item">
+                        <div
+                            className="actuall-tasks__settings-item"
+                            onClick={() => deleteLocalTask(task.id)}
+                        >
                             <i
                                 className="fas fa-trash-alt"
                                 style={{ color: '#eb4d4b' }}
@@ -26,7 +32,7 @@ const TaskItem = ({ task, handleChangeImportantState }) => {
                         </div>
                         <div
                             className="actuall-tasks__settings-item"
-                            onClick={() => handleChangeImportantState(task.id)}
+                            onClick={() => setImportantLocalTask(task.id)}
                         >
                             {task.important ? (
                                 <i
@@ -45,6 +51,11 @@ const TaskItem = ({ task, handleChangeImportantState }) => {
             </div>
         </div>
     );
+};
+
+TaskItem.propTypes = {
+    deleteLocalTask: PropTypes.func.isRequired,
+    setImportantLocalTask: PropTypes.func.isRequired,
 };
 
 export default TaskItem;

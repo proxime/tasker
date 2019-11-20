@@ -1,15 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ActuallTasks from './ActuallTasks/ActuallTasks';
+import AddTasks from './AddTasks/AddTasks';
 import { Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 const Main = ({ isOpenMenu }) => {
-    console.log(isOpenMenu);
     return (
         <div className={`container ${isOpenMenu ? 'smaller' : ''}`}>
             <main>
                 <Route path="/" exact component={ActuallTasks} />
+                <Route path="/add" exact component={AddTasks} />
             </main>
             <footer>asdasdads</footer>
         </div>

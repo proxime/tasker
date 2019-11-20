@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { changeMenuState } from '../../actions/other';
 
@@ -11,7 +12,6 @@ const MobileAside = ({ changeMenuState }) => {
                 () => item.classList.add('show'),
                 (index * 0.1 + 0.2) * 1000,
             );
-            item.addEventListener('click', () => changeMenuState(false));
         });
     }, []);
 
@@ -20,10 +20,34 @@ const MobileAside = ({ changeMenuState }) => {
             <div className="mobile-aside__popup"></div>
             <aside className="mobile-aside">
                 <div className="mobile-aside__list">
-                    <div className="mobile-aside__item">Dodaj Zadanie</div>
-                    <div className="mobile-aside__item">Aktualne Zadania</div>
-                    <div className="mobile-aside__item">Ukończone Zadania</div>
-                    <div className="mobile-aside__item">Zaloguj się</div>
+                    <Link
+                        to="/add"
+                        className="mobile-aside__item"
+                        onClick={() => changeMenuState(false)}
+                    >
+                        Dodaj Zadanie
+                    </Link>
+                    <Link
+                        to="/"
+                        className="mobile-aside__item"
+                        onClick={() => changeMenuState(false)}
+                    >
+                        Aktualne Zadania
+                    </Link>
+                    <Link
+                        to="/done"
+                        className="mobile-aside__item"
+                        onClick={() => changeMenuState(false)}
+                    >
+                        Ukończone Zadania
+                    </Link>
+                    <Link
+                        to="/login"
+                        className="mobile-aside__item"
+                        onClick={() => changeMenuState(false)}
+                    >
+                        Zaloguj się
+                    </Link>
                 </div>
             </aside>
         </>
