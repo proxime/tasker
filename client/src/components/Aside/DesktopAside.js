@@ -24,14 +24,14 @@ const DesktopAside = ({ isOpenMenu }) => {
                             Aktualne Zadania
                         </p>
                     </NavLink>
-                    <div className="desktop-aside__item">
+                    <NavLink to="/done" className="desktop-aside__item">
                         <div className="desktop-aside__item-icon">
                             <i className="fas fa-tasks"></i>
                         </div>
                         <p className="desktop-aside__item-text">
                             Ukończone Zadania
                         </p>
-                    </div>
+                    </NavLink>
                 </div>
             </Scrollbars>
         </aside>

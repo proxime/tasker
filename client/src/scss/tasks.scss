@@ -27,19 +27,16 @@
     }
     &__settings-items {
         display: flex;
+        padding-top: 10px;
     }
     &__settings-item {
         cursor: pointer;
         font-size: 2rem;
         padding: 5px 10px;
         border-radius: 5px;
-        color: #555;
-        // @media (min-width: 950px) {
-        //     &:hover {
-        //         background-color: #50c3f8;
-        //         color: white;
-        //     }
-        // }
+        color: white;
+        background-color: $navbar-bg;
+        margin: 0 5px;
     }
 }
 
@@ -99,13 +96,17 @@
         border-bottom: none;
     }
     &.important {
-        background-color: #7ed6df;
-        color: white;
+        background-color: #f9ca24;
+        color: #fff;
         &:hover {
-            background-color: darken(#7ed6df, 5%);
+            background-color: darken(#f9ca24, 5%);
         }
         .task__desc {
             color: white;
+        }
+        .actuall-tasks__settings-item {
+            background-color: white;
+            color: #555;
         }
     }
     &__expires {
@@ -151,4 +152,10 @@
             font-size: 1.6rem;
         }
     }
+}
+
+.completed-tasks {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
 }

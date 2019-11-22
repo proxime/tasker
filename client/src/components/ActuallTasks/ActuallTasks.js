@@ -7,7 +7,7 @@ import Tasks from './Tasks';
 const ActuallTasks = () => {
     return (
         <div className="actuall-tasks">
-            <ActuallTasksSettings />
+            {/* <ActuallTasksSettings /> */}
             <AccountInfo />
             <SectionTitle>Aktualne Zadania</SectionTitle>
             <Tasks />

@@ -1,4 +1,9 @@
-import { ADD_LOCAL_TASK, DELETE_LOCAL_TASK, SET_IMPORTANT_TASK } from './types';
+import {
+    ADD_LOCAL_TASK,
+    DELETE_LOCAL_TASK,
+    SET_IMPORTANT_TASK,
+    SET_AS_DONE_LOCAL_TASK,
+} from './types';
 const uuidv4 = require('uuid/v4');
 
 export const addLocalTask = ({
@@ -31,6 +36,13 @@ export const deleteLocalTask = id => dispatch => {
 export const setImportantLocalTask = id => dispatch => {
     dispatch({
         type: SET_IMPORTANT_TASK,
+        payload: id,
+    });
+};
+
+export const setAsDoneLocalTask = id => dispatch => {
+    dispatch({
+        type: SET_AS_DONE_LOCAL_TASK,
         payload: id,
     });
 };

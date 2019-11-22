@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ActuallTasks from './ActuallTasks/ActuallTasks';
 import AddTasks from './AddTasks/AddTasks';
+import CompletedTasks from './CompletedTasks/CompletedTasks';
 import { Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 
@@ -11,6 +12,7 @@ const Main = ({ isOpenMenu }) => {
             <main>
                 <Route path="/" exact component={ActuallTasks} />
                 <Route path="/add" exact component={AddTasks} />
+                <Route path="/done" exact component={CompletedTasks} />
             </main>
             <footer>asdasdads</footer>
         </div>

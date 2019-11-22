@@ -2,17 +2,17 @@ import React from 'react';
 import ActuallTasksSettings from '../ActuallTasks/ActuallTasksSetting';
 import AccountInfo from '../AccountInfo';
 import SectionTitle from '../SectionTitle';
-import TasksForm from './TasksForm';
+import Done from './Done';
 
-const AddTasks = () => {
+const CompletedTasks = () => {
     return (
-        <div className="add-tasks">
+        <div className="completed-tasks">
             {/* <ActuallTasksSettings /> */}
             <AccountInfo />
-            <SectionTitle>Dodaj Zadanie</SectionTitle>
-            <TasksForm />
+            <SectionTitle>Ukończone Zadania</SectionTitle>
+            <Done />
         </div>
     );
 };
 
-export default AddTasks;
+export default CompletedTasks;

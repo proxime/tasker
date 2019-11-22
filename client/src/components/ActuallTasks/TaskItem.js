@@ -1,7 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const TaskItem = ({ task, deleteLocalTask, setImportantLocalTask }) => {
+const TaskItem = ({
+    task,
+    deleteLocalTask,
+    setImportantLocalTask,
+    setAsDoneLocalTask,
+}) => {
     return (
         <div className={`task ${task.important ? 'important' : null}`}>
             {task.expires && (
@@ -15,10 +20,13 @@ const TaskItem = ({ task, deleteLocalTask, setImportantLocalTask }) => {
                 </div>
                 <div className="task__functions">
                     <div className="actuall-tasks__settings-items">
-                        <div className="actuall-tasks__settings-item">
+                        <div
+                            className="actuall-tasks__settings-item"
+                            onClick={() => setAsDoneLocalTask(task.id)}
+                        >
                             <i
                                 className="fas fa-check"
-                                style={{ color: '#badc58' }}
+                                // style={{ color: '#badc58' }}
                             ></i>
                         </div>
                         <div
@@ -27,7 +35,7 @@ const TaskItem = ({ task, deleteLocalTask, setImportantLocalTask }) => {
                         >
                             <i
                                 className="fas fa-trash-alt"
-                                style={{ color: '#eb4d4b' }}
+                                // style={{ color: '#eb4d4b' }}
                             ></i>
                         </div>
                         <div
@@ -37,12 +45,12 @@ const TaskItem = ({ task, deleteLocalTask, setImportantLocalTask }) => {
                             {task.important ? (
                                 <i
                                     className="fas fa-star"
-                                    style={{ color: '#f9ca24' }}
+                                    // style={{ color: '#f9ca24' }}
                                 ></i>
                             ) : (
                                 <i
                                     className="far fa-star"
-                                    style={{ color: '#f9ca24' }}
+                                    // style={{ color: '#f9ca24' }}
                                 ></i>
                             )}
                         </div>
@@ -56,6 +64,7 @@ const TaskItem = ({ task, deleteLocalTask, setImportantLocalTask }) => {
 TaskItem.propTypes = {
     deleteLocalTask: PropTypes.func.isRequired,
     setImportantLocalTask: PropTypes.func.isRequired,
+    setAsDoneLocalTask: PropTypes.func.isRequired,
 };
 
 export default TaskItem;

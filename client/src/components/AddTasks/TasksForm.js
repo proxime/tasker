@@ -23,12 +23,12 @@ const TasksForm = ({ addLocalTask }) => {
             ...formData,
             [e.target.name]: e.target.value,
         });
-        if ([e.target.name] == 'task') {
+        if (e.target.name === 'task') {
             setFormErrors({
                 ...formErrors,
                 task: '',
             });
-        } else if ([e.target.name] == 'expires') {
+        } else if (e.target.name === 'expires') {
             setFormErrors({
                 ...formErrors,
                 expires: '',
@@ -58,7 +58,6 @@ const TasksForm = ({ addLocalTask }) => {
     const onSubmit = e => {
         e.preventDefault();
         const date = expires ? checkDate() : true;
-        console.log(date);
         if (!task || !date) {
             if (!task && !date) {
                 setFormErrors({
