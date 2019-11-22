@@ -36,7 +36,7 @@ const Tasks = ({
             {deleteId && (
                 <ConfirmDelete
                     setDeleteId={setDeleteId}
-                    deleteLocalTask={deleteLocalTask}
+                    deleteTask={deleteLocalTask}
                     id={deleteId}
                 />
             )}

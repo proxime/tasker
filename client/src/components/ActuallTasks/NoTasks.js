@@ -10,7 +10,7 @@ const NoTasks = () => {
             <div className="no-tasks__content">
                 <div className="no-tasks__title">Nie znaleziono zadań</div>
                 <div className="no-tasks__text">
-                    Czy chcesz <Link to="/add">Dodać zadanie?</Link>
+                    Czy chcesz <Link to="/add">dodać zadanie?</Link>
                 </div>
             </div>
         </div>

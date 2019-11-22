@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 
-const ConfirmDelete = ({ setDeleteId, deleteLocalTask, id }) => {
+const ConfirmDelete = ({ setDeleteId, deleteTask, id }) => {
     const confrimDelete = id => {
-        deleteLocalTask(id);
+        deleteTask(id);
         setDeleteId(null);
     };
 
@@ -41,7 +41,7 @@ const ConfirmDelete = ({ setDeleteId, deleteLocalTask, id }) => {
 
 ConfirmDelete.propTypes = {
     setDeleteId: PropTypes.func.isRequired,
-    deleteLocalTask: PropTypes.func.isRequired,
+    deleteTask: PropTypes.func.isRequired,
     id: PropTypes.string.isRequired,
 };
 

@@ -1,7 +1,7 @@
 import React from 'react';
 // import PropTypes from 'prop-types';
 
-const DoneTask = ({ task }) => {
+const DoneTask = ({ task, setDeleteId }) => {
     return (
         <div className="task">
             {task.completedDate && (
@@ -17,7 +17,7 @@ const DoneTask = ({ task }) => {
                     <div className="actuall-tasks__settings-items">
                         <div
                             className="actuall-tasks__settings-item"
-                            // onClick={() => deleteLocalTask(task.id)}
+                            onClick={() => setDeleteId(task.id)}
                         >
                             <i className="fas fa-trash-alt"></i>
                         </div>

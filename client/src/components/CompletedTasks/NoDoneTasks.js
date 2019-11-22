@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const NoDoneTasks = () => {
     return (
@@ -7,8 +8,9 @@ const NoDoneTasks = () => {
                 <i className="fas fa-exclamation-circle"></i>
             </div>
             <div className="no-tasks__content">
-                <div className="no-tasks__title">
-                    Wygląda na to, że nie ukończyłeś jeszcze żadnego zadania
+                <div className="no-tasks__title">Nie znaleziono zadań</div>
+                <div className="no-tasks__text">
+                    Musisz <Link to="/">ukończyć zadanie</Link>
                 </div>
             </div>
         </div>

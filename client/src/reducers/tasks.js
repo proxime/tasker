@@ -3,6 +3,7 @@ import {
     DELETE_LOCAL_TASK,
     SET_IMPORTANT_TASK,
     SET_AS_DONE_LOCAL_TASK,
+    DELETE_LOCAL_DONE_TASK,
 } from '../actions/types';
 
 const initState = {
@@ -62,6 +63,13 @@ export default function(state = initState, action) {
                 ...state,
                 done,
                 tasks,
+            };
+        case DELETE_LOCAL_DONE_TASK:
+            const newDone = state.done.filter(task => task.id !== payload);
+            localStorage.setItem('done', JSON.stringify(newDone));
+            return {
+                ...state,
+                done: newDone,
             };
         default:
             return state;

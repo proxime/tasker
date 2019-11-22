@@ -79,6 +79,9 @@
         a {
             text-decoration: none;
             color: darken($navbar-bg, 10%);
+            &:hover {
+                text-decoration: underline;
+            }
         }
     }
 }
