@@ -5,6 +5,7 @@ import AddTasks from './AddTasks/AddTasks';
 import CompletedTasks from './CompletedTasks/CompletedTasks';
 import Register from './Auth/Register/Register';
 import Login from './Auth/Login/Login';
+import SearchResult from './SearchResult';
 import { Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 
@@ -17,6 +18,7 @@ const Main = ({ isOpenMenu }) => {
                 <Route path="/done" exact component={CompletedTasks} />
                 <Route path="/login" exact component={Login} />
                 <Route path="/register" exact component={Register} />
+                <Route path="/search" exact component={SearchResult} />
             </main>
             <footer>asdasdads</footer>
         </div>

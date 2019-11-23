@@ -2,11 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-const NavbarDesktop = ({ searchText, setSearchText }) => {
+const NavbarDesktop = ({ searchText, setSearchText, handleSearch }) => {
     return (
         <div className="navbar__desktop">
             <div className="navbar__desktop-search">
-                <form>
+                <form onSubmit={e => handleSearch(e)}>
                     <div className="navbar__desktop-input">
                         <div
                             className="navbar__search-desktop-input-close"

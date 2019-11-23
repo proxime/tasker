@@ -1,7 +1,8 @@
-import { CHANGE_MENU_STATE } from '../actions/types';
+import { CHANGE_MENU_STATE, SEARCH_TASK } from '../actions/types';
 
 const initialState = {
     isOpenMenu: true,
+    search: '',
 };
 
 export default function(state = initialState, action) {
@@ -12,6 +13,11 @@ export default function(state = initialState, action) {
             return {
                 ...state,
                 isOpenMenu: payload,
+            };
+        case SEARCH_TASK:
+            return {
+                ...state,
+                search: payload,
             };
         default:
             return state;

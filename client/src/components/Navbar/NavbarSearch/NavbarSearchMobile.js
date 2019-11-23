@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
-const NavbarSearchMobile = ({ searchText, setSearchText }) => {
+const NavbarSearchMobile = ({ searchText, setSearchText, handleSearch }) => {
     const [isSearchOpen, setIsSearchOpen] = useState(false);
 
     const handleSearchMoblie = () => {
@@ -11,7 +11,7 @@ const NavbarSearchMobile = ({ searchText, setSearchText }) => {
                 .querySelector('.navbar__search-mobile-input input')
                 .focus();
         } else {
-            console.log('search');
+            handleSearch();
         }
     };
 
