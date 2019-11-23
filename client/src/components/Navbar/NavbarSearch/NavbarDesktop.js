@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 const NavbarDesktop = ({ searchText, setSearchText }) => {
     return (
@@ -54,9 +55,9 @@ const NavbarDesktop = ({ searchText, setSearchText }) => {
                 </form>
             </div>
             <div className="navbar__desktop-login">
-                <a href="#!" className="navbar__desktop-login-link">
+                <Link to="/login" className="navbar__desktop-login-link">
                     Logowanie
-                </a>
+                </Link>
             </div>
         </div>
     );

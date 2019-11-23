@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import ActuallTasks from './ActuallTasks/ActuallTasks';
 import AddTasks from './AddTasks/AddTasks';
 import CompletedTasks from './CompletedTasks/CompletedTasks';
+import Register from './Auth/Register/Register';
+import Login from './Auth/Login/Login';
 import { Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 
@@ -13,6 +15,8 @@ const Main = ({ isOpenMenu }) => {
                 <Route path="/" exact component={ActuallTasks} />
                 <Route path="/add" exact component={AddTasks} />
                 <Route path="/done" exact component={CompletedTasks} />
+                <Route path="/login" exact component={Login} />
+                <Route path="/register" exact component={Register} />
             </main>
             <footer>asdasdads</footer>
         </div>

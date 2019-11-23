@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const AccountInfo = () => {
     return (
@@ -13,9 +14,11 @@ const AccountInfo = () => {
                     dzięki czemu zyskasz do nich dostęp na wszystkich swoich
                     urządzeniach
                 </p>
-                <a className="account-info__register">Rejestracja</a>
+                <Link to="/register" className="account-info__register">
+                    Rejestracja
+                </Link>
                 <div className="account-info__login">
-                    Masz już konto? <a href="#!">Zaloguj się</a>
+                    Masz już konto? <Link to="/login">Zaloguj się</Link>
                 </div>
             </div>
         </div>
