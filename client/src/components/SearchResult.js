@@ -47,6 +47,12 @@ const SearchResult = ({
     return (
         <>
             <AccountInfo />
+            {(doneTasks.length > 0 || actualTasks.length > 0) && (
+                <SectionTitle>
+                    Wyniki wyszukiwania dla{' '}
+                    <span className="search-color">"{search}"</span>
+                </SectionTitle>
+            )}
             {actualTasks.length > 0 && (
                 <>
                     <SectionTitle>Aktualne Zadania</SectionTitle>
@@ -58,6 +64,21 @@ const SearchResult = ({
                     <SectionTitle>UKOŃCZONE ZADANIA</SectionTitle>
                     {doneTasks}
                 </>
+            )}
+            {!doneTasks.length > 0 && !actualTasks.length && (
+                <div className="no-tasks">
+                    <div className="no-tasks__icon">
+                        <i className="fas fa-exclamation-circle"></i>
+                    </div>
+                    <div className="no-tasks__content">
+                        <div className="no-tasks__title">
+                            Brak wyników wyszukiwania
+                        </div>
+                        <div className="no-tasks__text">
+                            <span className="search-color">"{search}"</span>
+                        </div>
+                    </div>
+                </div>
             )}
         </>
     );

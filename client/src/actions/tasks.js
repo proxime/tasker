@@ -5,6 +5,7 @@ import {
     SET_AS_DONE_LOCAL_TASK,
     DELETE_LOCAL_DONE_TASK,
 } from './types';
+import { setAlert } from './other';
 const uuidv4 = require('uuid/v4');
 
 export const addLocalTask = ({
@@ -25,6 +26,8 @@ export const addLocalTask = ({
         type: ADD_LOCAL_TASK,
         payload: newTask,
     });
+
+    dispatch(setAlert('Zadanie zostało dodane', 'confirm'));
 };
 
 export const deleteLocalTask = id => dispatch => {
@@ -32,6 +35,7 @@ export const deleteLocalTask = id => dispatch => {
         type: DELETE_LOCAL_TASK,
         payload: id,
     });
+    dispatch(setAlert('Zadanie zostało usunięte', 'danger'));
 };
 
 export const setImportantLocalTask = id => dispatch => {
@@ -46,12 +50,13 @@ export const setAsDoneLocalTask = id => dispatch => {
         type: SET_AS_DONE_LOCAL_TASK,
         payload: id,
     });
+    dispatch(setAlert('Ukończyłeś zadanie', 'confirm'));
 };
 
 export const deleteLocalDoneTask = id => dispatch => {
-    console.log('asd');
     dispatch({
         type: DELETE_LOCAL_DONE_TASK,
         payload: id,
     });
+    dispatch(setAlert('Zadanie zostało usunięte', 'danger'));
 };

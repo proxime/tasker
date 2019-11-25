@@ -6,10 +6,11 @@ import CompletedTasks from './CompletedTasks/CompletedTasks';
 import Register from './Auth/Register/Register';
 import Login from './Auth/Login/Login';
 import SearchResult from './SearchResult';
+import Alert from './Alert';
 import { Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-const Main = ({ isOpenMenu }) => {
+const Main = ({ isOpenMenu, alert }) => {
     return (
         <div className={`container ${isOpenMenu ? 'smaller' : ''}`}>
             <main>
@@ -19,6 +20,14 @@ const Main = ({ isOpenMenu }) => {
                 <Route path="/login" exact component={Login} />
                 <Route path="/register" exact component={Register} />
                 <Route path="/search" exact component={SearchResult} />
+                {alert.msg && (
+                    <Alert
+                        isOpenMenu={isOpenMenu}
+                        msg={alert.msg}
+                        type={alert.type}
+                        id={alert.id}
+                    />
+                )}
             </main>
             <footer>asdasdads</footer>
         </div>
@@ -27,10 +36,12 @@ const Main = ({ isOpenMenu }) => {
 
 Main.propTypes = {
     isOpenMenu: PropTypes.bool.isRequired,
+    alert: PropTypes.string,
 };
 
 const mapStateToProps = state => ({
     isOpenMenu: state.other.isOpenMenu,
+    alert: state.other.alert,
 });
 
 export default connect(mapStateToProps)(Main);
