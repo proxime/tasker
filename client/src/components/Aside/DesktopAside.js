@@ -32,6 +32,14 @@ const DesktopAside = ({ isOpenMenu }) => {
                             Ukończone Zadania
                         </p>
                     </NavLink>
+                    <NavLink to="/expired" className="desktop-aside__item">
+                        <div className="desktop-aside__item-icon">
+                            <i className="fas fa-hourglass-end"></i>
+                        </div>
+                        <p className="desktop-aside__item-text">
+                            Wygasłe Zadania
+                        </p>
+                    </NavLink>
                 </div>
             </Scrollbars>
         </aside>

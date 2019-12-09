@@ -4,12 +4,23 @@ import {
     SET_IMPORTANT_TASK,
     SET_AS_DONE_LOCAL_TASK,
     DELETE_LOCAL_DONE_TASK,
+    DELETE_LOCAL_EXPIRED_TASK,
+    DELETE_LOCAL_SEARCHED_TASK,
+    SET_AS_EXPIRED_LOCAL_TASK,
 } from '../actions/types';
 
 const initState = {
     tasks: localStorage.tasks ? JSON.parse(localStorage.tasks) : [],
     done: localStorage.done ? JSON.parse(localStorage.done) : [],
+    expired: localStorage.expired ? JSON.parse(localStorage.expired) : [],
 };
+
+const date = new Date();
+const year = date.getFullYear();
+const month =
+    date.getMonth() + 1 < 10 ? `0${date.getMonth() + 1}` : date.getMonth() + 1;
+const day = date.getDate() < 10 ? `0${date.getDate()}` : date.getDate();
+const stringDate = `${year}-${month}-${day}`;
 
 export default function(state = initState, action) {
     const { type, payload } = action;
@@ -51,11 +62,7 @@ export default function(state = initState, action) {
             const tasks = [...state.tasks.filter(task => task.id !== payload)];
             const done = [state.tasks[doneTaskIndex], ...state.done];
 
-            const date = new Date();
-            const completedDate = `${date.getFullYear()}-${date.getMonth() +
-                1}-${date.getDate()}`;
-
-            done[0].completedDate = completedDate;
+            done[0].completedDate = stringDate;
 
             localStorage.setItem('tasks', JSON.stringify(tasks));
             localStorage.setItem('done', JSON.stringify(done));
@@ -70,6 +77,45 @@ export default function(state = initState, action) {
             return {
                 ...state,
                 done: newDone,
+            };
+        case SET_AS_EXPIRED_LOCAL_TASK:
+            const expiredTasks = state.tasks.filter(
+                task => task.expires && task.expires < stringDate,
+            );
+            const NotExpiredTasks = state.tasks.filter(
+                task => !task.expires || task.expires >= stringDate,
+            );
+            localStorage.setItem('expired', JSON.stringify(expiredTasks));
+            localStorage.setItem('tasks', JSON.stringify(NotExpiredTasks));
+
+            return {
+                ...state,
+                tasks: NotExpiredTasks,
+                expired: expiredTasks,
+            };
+        case DELETE_LOCAL_EXPIRED_TASK:
+            const newExpired = state.expired.filter(
+                task => task.id !== payload,
+            );
+            localStorage.setItem('expired', JSON.stringify(newExpired));
+            return {
+                ...state,
+                expired: newExpired,
+            };
+        case DELETE_LOCAL_SEARCHED_TASK:
+            const searchedTasks = state.tasks.filter(
+                task => task.id !== payload,
+            );
+            const searchedDoneTasks = state.done.filter(
+                task => task.id !== payload,
+            );
+
+            localStorage.setItem('tasks', JSON.stringify(searchedTasks));
+            localStorage.setItem('done', JSON.stringify(searchedDoneTasks));
+            return {
+                ...state,
+                tasks: searchedTasks,
+                done: searchedDoneTasks,
             };
         default:
             return state;

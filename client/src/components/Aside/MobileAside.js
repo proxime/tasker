@@ -42,6 +42,13 @@ const MobileAside = ({ changeMenuState }) => {
                         Ukończone Zadania
                     </Link>
                     <Link
+                        to="/expired"
+                        className="mobile-aside__item"
+                        onClick={() => changeMenuState(false)}
+                    >
+                        Wygasłe Zadania
+                    </Link>
+                    <Link
                         to="/login"
                         className="mobile-aside__item"
                         onClick={() => changeMenuState(false)}

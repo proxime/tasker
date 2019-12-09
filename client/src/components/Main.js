@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import ActuallTasks from './ActuallTasks/ActuallTasks';
 import AddTasks from './AddTasks/AddTasks';
 import CompletedTasks from './CompletedTasks/CompletedTasks';
+import ExpiredTasks from './ExpiredTasks/ExpiredTasks';
 import Register from './Auth/Register/Register';
 import Login from './Auth/Login/Login';
 import SearchResult from './SearchResult';
@@ -17,6 +18,7 @@ const Main = ({ isOpenMenu, alert }) => {
                 <Route path="/" exact component={ActuallTasks} />
                 <Route path="/add" exact component={AddTasks} />
                 <Route path="/done" exact component={CompletedTasks} />
+                <Route path="/expired" exact component={ExpiredTasks} />
                 <Route path="/login" exact component={Login} />
                 <Route path="/register" exact component={Register} />
                 <Route path="/search" exact component={SearchResult} />
@@ -36,7 +38,7 @@ const Main = ({ isOpenMenu, alert }) => {
 
 Main.propTypes = {
     isOpenMenu: PropTypes.bool.isRequired,
-    alert: PropTypes.string,
+    alert: PropTypes.object,
 };
 
 const mapStateToProps = state => ({

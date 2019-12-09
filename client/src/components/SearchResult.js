@@ -3,15 +3,21 @@ import AccountInfo from './AccountInfo';
 import SectionTitle from './SectionTitle';
 import TaskItem from './ActuallTasks/TaskItem';
 import DoneTask from './CompletedTasks/DoneTask';
+import ConfirmDelete from './ConfirmDelete';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { setImportantLocalTask, setAsDoneLocalTask } from '../actions/tasks';
+import {
+    setImportantLocalTask,
+    setAsDoneLocalTask,
+    deleteLocalSearchedTask,
+} from '../actions/tasks';
 
 const SearchResult = ({
     search,
     tasks: { tasks, done },
     setImportantLocalTask,
     setAsDoneLocalTask,
+    deleteLocalSearchedTask,
 }) => {
     const [deleteId, setDeleteId] = useState('');
     if (!search) return <Redirect to="/" />;
@@ -80,6 +86,13 @@ const SearchResult = ({
                     </div>
                 </div>
             )}
+            {deleteId && (
+                <ConfirmDelete
+                    setDeleteId={setDeleteId}
+                    deleteTask={deleteLocalSearchedTask}
+                    id={deleteId}
+                />
+            )}
         </>
     );
 };
@@ -92,4 +105,5 @@ const mapStateToProps = state => ({
 export default connect(mapStateToProps, {
     setImportantLocalTask,
     setAsDoneLocalTask,
+    deleteLocalSearchedTask,
 })(SearchResult);
