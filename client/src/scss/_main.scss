@@ -276,3 +276,12 @@ body::-webkit-scrollbar-thumb {
         }
     }
 }
+
+.footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: #333;
+}

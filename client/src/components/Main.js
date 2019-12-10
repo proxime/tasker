@@ -31,7 +31,9 @@ const Main = ({ isOpenMenu, alert }) => {
                     />
                 )}
             </main>
-            <footer>asdasdads</footer>
+            <footer className="footer">
+                <p>Norbert Kułak 2019 &copy;</p>
+            </footer>
         </div>
     );
 };
