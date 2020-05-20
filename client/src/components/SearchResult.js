@@ -3,6 +3,7 @@ import AccountInfo from './AccountInfo';
 import SectionTitle from './SectionTitle';
 import TaskItem from './ActuallTasks/TaskItem';
 import DoneTask from './CompletedTasks/DoneTask';
+import ExpiredTask from './ExpiredTasks/ExpiredItem';
 import ConfirmDelete from './ConfirmDelete';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -14,7 +15,7 @@ import {
 
 const SearchResult = ({
     search,
-    tasks: { tasks, done },
+    tasks: { tasks, done, expired },
     setImportantLocalTask,
     setAsDoneLocalTask,
     deleteLocalSearchedTask,
@@ -36,6 +37,13 @@ const SearchResult = ({
         return false;
     });
 
+    const expiredTasksNumber = expired.filter(done => {
+        const word = done.task.toLowerCase();
+        const include = word.search(search.toLowerCase());
+        if (include >= 0) return done;
+        return false;
+    });
+
     const actualTasks = actualTasksNumber.map(task => (
         <TaskItem
             task={task}
@@ -48,6 +56,10 @@ const SearchResult = ({
 
     const doneTasks = doneTasksNumber.map(task => (
         <DoneTask task={task} key={task.id} setDeleteId={setDeleteId} />
+    ));
+
+    const expiredTasks = expiredTasksNumber.map(task => (
+        <ExpiredTask task={task} key={task.id} setDeleteId={setDeleteId} />
     ));
 
     return (
@@ -71,7 +83,13 @@ const SearchResult = ({
                     {doneTasks}
                 </>
             )}
-            {!doneTasks.length > 0 && !actualTasks.length && (
+            {expiredTasks.length > 0 && (
+                <>
+                    <SectionTitle>Wygasłe ZADANIA</SectionTitle>
+                    {expiredTasks}
+                </>
+            )}
+            {!doneTasks.length && !actualTasks.length && !expiredTasks.length && (
                 <div className="no-tasks">
                     <div className="no-tasks__icon">
                         <i className="fas fa-exclamation-circle"></i>

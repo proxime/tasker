@@ -85,13 +85,16 @@ export default function(state = initState, action) {
             const NotExpiredTasks = state.tasks.filter(
                 task => !task.expires || task.expires >= stringDate,
             );
-            localStorage.setItem('expired', JSON.stringify(expiredTasks));
+            localStorage.setItem(
+                'expired',
+                JSON.stringify([...state.expired, ...expiredTasks]),
+            );
             localStorage.setItem('tasks', JSON.stringify(NotExpiredTasks));
 
             return {
                 ...state,
                 tasks: NotExpiredTasks,
-                expired: expiredTasks,
+                expired: [...state.expired, ...expiredTasks],
             };
         case DELETE_LOCAL_EXPIRED_TASK:
             const newExpired = state.expired.filter(
@@ -109,13 +112,21 @@ export default function(state = initState, action) {
             const searchedDoneTasks = state.done.filter(
                 task => task.id !== payload,
             );
+            const searchedExpiredTasks = state.expired.filter(
+                task => task.id !== payload,
+            );
 
             localStorage.setItem('tasks', JSON.stringify(searchedTasks));
             localStorage.setItem('done', JSON.stringify(searchedDoneTasks));
+            localStorage.setItem(
+                'expired',
+                JSON.stringify(searchedExpiredTasks),
+            );
             return {
                 ...state,
                 tasks: searchedTasks,
                 done: searchedDoneTasks,
+                expired: searchedExpiredTasks,
             };
         default:
             return state;
